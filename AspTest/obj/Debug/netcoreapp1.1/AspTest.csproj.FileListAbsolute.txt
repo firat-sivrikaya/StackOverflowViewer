@@ -1,0 +1,16 @@
+/Users/djcedrics/AspTest/bin/Debug/netcoreapp1.1/AspTest.deps.json
+/Users/djcedrics/AspTest/bin/Debug/netcoreapp1.1/AspTest.runtimeconfig.json
+/Users/djcedrics/AspTest/bin/Debug/netcoreapp1.1/AspTest.runtimeconfig.dev.json
+/Users/djcedrics/AspTest/obj/Debug/netcoreapp1.1/AspTest.AssemblyInfo.cs
+/Users/djcedrics/AspTest/bin/Debug/netcoreapp1.1/AspTest.dll
+/Users/djcedrics/AspTest/bin/Debug/netcoreapp1.1/AspTest.pdb
+/Users/djcedrics/AspTest/obj/Debug/netcoreapp1.1/AspTest.dll
+/Users/djcedrics/AspTest/obj/Debug/netcoreapp1.1/AspTest.pdb
+/Users/djcedrics/cSharpProjects/AspTest/bin/Debug/netcoreapp1.1/AspTest.deps.json
+/Users/djcedrics/cSharpProjects/AspTest/bin/Debug/netcoreapp1.1/AspTest.runtimeconfig.json
+/Users/djcedrics/cSharpProjects/AspTest/bin/Debug/netcoreapp1.1/AspTest.runtimeconfig.dev.json
+/Users/djcedrics/cSharpProjects/AspTest/bin/Debug/netcoreapp1.1/AspTest.dll
+/Users/djcedrics/cSharpProjects/AspTest/bin/Debug/netcoreapp1.1/AspTest.pdb
+/Users/djcedrics/cSharpProjects/AspTest/obj/Debug/netcoreapp1.1/AspTest.AssemblyInfo.cs
+/Users/djcedrics/cSharpProjects/AspTest/obj/Debug/netcoreapp1.1/AspTest.dll
+/Users/djcedrics/cSharpProjects/AspTest/obj/Debug/netcoreapp1.1/AspTest.pdb

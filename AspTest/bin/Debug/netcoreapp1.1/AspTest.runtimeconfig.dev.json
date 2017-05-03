@@ -1,0 +1,7 @@
+{
+  "runtimeOptions": {
+    "additionalProbingPaths": [
+      "/Users/djcedrics/.nuget/packages"
+    ]
+  }
+}
