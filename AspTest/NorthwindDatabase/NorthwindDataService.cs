@@ -4,7 +4,7 @@ using DomainModel;
 using DataAccessLayer;
 
 using System.Linq;
-
+/* 
 namespace NorthwindDatabase
 {
     public class NorthwindDataService : IDataService
@@ -23,6 +23,6 @@ namespace NorthwindDatabase
             {
                 return context.Categories.Find(id);
             }
-        }
+        }     
     }
-}
+}*/

@@ -1,5 +1,5 @@
 using System;
- 
+ /* 
  namespace DomainModel
  {
      public class Category
@@ -8,4 +8,4 @@ using System;
          public string Name { get; set; }
          public string Description { get; set; }
      }
- }
+ }*/

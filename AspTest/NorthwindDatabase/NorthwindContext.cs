@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using DomainModel; 
- 
+ /* 
  namespace NorthwindDatabase
  {
      public class NorthwindContex : DbContext
@@ -21,4 +21,4 @@ using DomainModel;
              modelBuilder.Entity<Category>().Property(x => x.Name).HasColumnName("categoryname");
          }
      }
- }
+ }*/

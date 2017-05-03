@@ -13,6 +13,7 @@
     <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="1.1.2" />
     <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="1.1.1" />
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="1.1.1-prerelease-10022" />
+    <PackageReference Include="AutoMapper" Version="6.0.2" />
   </ItemGroup>
 
 </Project>

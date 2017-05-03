@@ -1,61 +1,120 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using DataAccessLayer;
 using Microsoft.AspNetCore.Mvc;
-using NorthwindDatabase;
-
+using WebService.Models;
+using AutoMapper;
+using System.Collections.Generic;
+using DomainModel;
+/* 
 namespace AspTest.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/categories")]
     public class CategoriesController : Controller
     {
-
-        IDataService _dataservice;
+        private readonly IDataService _dataService;
 
         public CategoriesController(IDataService dataService)
         {
-            _dataservice = dataService;
+            _dataService = dataService;
         }
 
-        [HttpGet]
-        public IActionResult Get()
+        const int maxPageSize = 20;
+
+        [HttpGet(Name = nameof(GetCategories))]
+        public IActionResult GetCategories(int pageNumber = 1, int pageSize = 5)
         {
-            var data = _dataservice.GetCategories();
-            return Ok(data);
+            pageSize = pageSize > maxPageSize ? maxPageSize : pageSize;
+
+            var data = _dataService.GetCategories(pageNumber, pageSize);
+
+            var result = Mapper.Map<IEnumerable<CategoryListModel>>(data);
+
+            var prevlink = pageNumber > 1
+                ? Url.Link(nameof(GetCategories), new { pageNumber = pageNumber - 1, pageSize })
+                : null;
+
+            var total = _dataService.GetNumberOfCategories();
+
+            var totalPages = (int)System.Math.Ceiling(total / (double)pageSize);
+
+            var nextlink = pageNumber < totalPages
+                ? Url.Link(nameof(GetCategories), new { pageNumber = pageNumber + 1, pageSize })
+                : null;
+
+            var curlink = Url.Link(nameof(GetCategories), new { pageNumber, pageSize });
+
+            var linkedResult = new
+            {
+                Result = result,
+                Links = new List<object>
+                {
+                    new { name = "prev", url = prevlink },
+                    new { name = "next", url = nextlink },
+                    new { name = "cur", url = curlink }
+                }
+            };
+
+            return Ok(linkedResult);
         }
 
-        // GET api/values
-        //[HttpGet]
-        // public IEnumerable<string> Get()
-        // {
-        //     return new string[] { "value1", "value2" };
-        // }
-
-        // GET api/values/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+        [HttpGet("{id}", Name = nameof(GetCategory))]
+        public IActionResult GetCategory(int id)
         {
-            return "value";
+            var category = _dataService.GetCategory(id);
+
+            if (category == null) return NotFound();
+
+            var model = Mapper.Map<CategoryModel>(category);
+
+            return Ok(model);
         }
 
-        // POST api/values
         [HttpPost]
-        public void Post([FromBody]string value)
+        public IActionResult CreateCategory([FromBody] CategoryCreateOrUpdateModel model)
         {
+            
+            if (model == null) return BadRequest();
+
+            var category = Mapper.Map<Category>(model);
+
+            _dataService.CreateCategory(category);
+
+            return CreatedAtRoute(nameof(GetCategory), new { id = category.Id }, Mapper.Map<CategoryModel>(category));
         }
 
-        // PUT api/values/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
+        public IActionResult UpdateCategory(int id, [FromBody] CategoryCreateOrUpdateModel model)
         {
+            if (model == null) return BadRequest();
+
+            var category = _dataService.GetCategory(id);
+
+            if (category == null) return NotFound();
+
+            Mapper.Map(model, category);
+
+            _dataService.UpdateCategory(category);
+
+            return NoContent();
         }
 
-        // DELETE api/values/5
+
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public IActionResult DeleteCategory(int id)
         {
+            var category = _dataService.GetCategory(id);
+
+            if (category == null) return NotFound();
+
+            _dataService.DeleteCategory(category);
+
+            return NoContent();
         }
+
+
+
+
+
     }
 }
+*/
