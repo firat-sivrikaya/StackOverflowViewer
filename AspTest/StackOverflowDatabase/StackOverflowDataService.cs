@@ -9,7 +9,7 @@ using DomainModel;
 
 namespace StackOverflowDatabase
 {
-        public class StackOverflowDataService : IMyDataService
+        public class StackOverflowDataService : IMyDataService, IUserDataService
         {
             public void CreatePost(Post post)
             {
@@ -70,6 +70,39 @@ namespace StackOverflowDatabase
                 {
                     contex.Post.Update(post);
                     contex.SaveChanges();
+                }
+            }
+
+            /*
+            
+            User related functions
+            
+             */
+            public User GetUser(int id)
+            {
+                using (var context = new StackOverflowContext())
+                {
+                    return context.User.Find(id);
+                }
+            }
+
+            public int GetNumberOfUsers()
+            {
+                using (var context = new StackOverflowContext())
+                {
+                    return context.User.Count();
+                }
+            }
+
+            public IList<User> GetUsers(int pageNumber, int pageSize)
+            {
+                using (var context = new StackOverflowContext())
+                {
+                    return context.User
+                        //.OrderBy(x => x.Name)
+                        .Skip((pageNumber - 1) * pageSize)  // 
+                        .Take(pageSize) // limit in db
+                        .ToList();
                 }
             }
         
