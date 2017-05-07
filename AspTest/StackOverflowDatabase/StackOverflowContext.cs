@@ -34,6 +34,7 @@ namespace StackOverflowDatabase
             //modelBuilder.Entity<Post>().Property(x => x.AcceptedAnswerId).HasColumnName("acceptedanserid");
             modelBuilder.Entity<Post>().Property(x => x.OwnerId).HasColumnName("ownerid");
             // Build models for users
+            modelBuilder.Entity<User>().ToTable("users");
             modelBuilder.Entity<User>().Property(x => x.Id).HasColumnName("iduser");
             modelBuilder.Entity<User>().Property(x => x.DisplayedName).HasColumnName("displayedname");
             modelBuilder.Entity<User>().Property(x => x.CreationDate).HasColumnName("creationdate");

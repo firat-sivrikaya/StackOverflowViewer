@@ -11,9 +11,9 @@ namespace DomainModel
         public int Score { get; set; }
         public string Body { get; set; }
         public string Title { get; set; }
-        //public DateTime ClosedDate { get; set; }
+        public Nullable<DateTime> ClosedDate { get; set; }
         public int PostTypeId { get; set; }
-        //public int AcceptedAnswerId { get; set; }
+        public Nullable<int> AcceptedAnswerId { get; set; }
         public int OwnerId { get; set; }
 
     }

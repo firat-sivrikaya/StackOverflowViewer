@@ -11,42 +11,39 @@ namespace WebService.Controllers
     [Route("api/[controller]")]
     public class UserController : Controller
     {
-        private readonly IMyDataService _dataService;
-        public UserController(IMyDataService dataService)
+        private readonly IUserDataService _dataService;
+        public UserController(IUserDataService dataService)
         {
             _dataService = dataService;
             //Mapper.CreateMap<DomainModel.Post, Models.PostModel>();
             Mapper.Initialize( cfg => {
                 //cfg.CreateMap<Source, Dest>();
-                cfg.CreateMap<Post, PostListModel>();
-                cfg.CreateMap<Post, PostModel>();
+                cfg.CreateMap<User, UserModel>();
+                cfg.CreateMap<User, UserListModel>();
             });
         }
 
         const int maxPageSize = 20;
 
-        [HttpGet(Name = nameof(GetPosts))]
-        public IActionResult GetPosts(int pageNumber = 1, int pageSize = 5)
+        [HttpGetAttribute(Name = nameof(GetUsers))]
+        public IActionResult GetUsers(int pageNumber = 1, int pageSize = 5)
         {
             pageSize = pageSize > maxPageSize ? maxPageSize : pageSize;
-
-            var data = _dataService.GetPost(pageNumber, pageSize);
-
-            var result = Mapper.Map<IEnumerable<PostListModel>>(data);
-
-            var prevlink = pageNumber > 1
-                ? Url.Link(nameof(GetPost), new { pageNumber = pageNumber - 1, pageSize })
+            var data = _dataService.GetUsers(pageNumber, pageSize);
+            var result = Mapper.Map<IEnumerable<UserListModel>>(data);
+                        var prevlink = pageNumber > 1
+                ? Url.Link(nameof(GetUser), new { pageNumber = pageNumber - 1, pageSize })
                 : null;
 
-            var total = _dataService.GetNumberOfPost();
+            var total = _dataService.GetNumberOfUsers();
 
             var totalPages = (int)System.Math.Ceiling(total / (double)pageSize);
 
             var nextlink = pageNumber < totalPages
-                ? Url.Link(nameof(GetPosts), new { pageNumber = pageNumber + 1, pageSize })
+                ? Url.Link(nameof(GetUsers), new { pageNumber = pageNumber + 1, pageSize })
                 : null;
 
-            var curlink = Url.Link(nameof(GetPosts), new { pageNumber, pageSize });
+            var curlink = Url.Link(nameof(GetUsers), new { pageNumber, pageSize });
 
             var linkedResult = new
             {
@@ -60,20 +57,22 @@ namespace WebService.Controllers
             };
 
             return Ok(linkedResult);
+
         }
 
-        [HttpGet("{id}", Name = nameof(GetPost))]
-        public IActionResult GetPost(int id)
+        [HttpGet("{id}", Name = nameof(GetUser))]
+        public IActionResult GetUser(int id)
         {
-            var post = _dataService.GetPost(id);
+            var user = _dataService.GetUser(id);
 
-            if (post == null) return NotFound();
+            if (user == null) return NotFound();
 
-            var model = Mapper.Map<PostModel>(post);
-
+            var model = Mapper.Map<UserModel>(user);
+            
             return Ok(model);
         }
 
+        /* 
         [HttpPost]
         public IActionResult CreatePost([FromBody] PostCreateOrUpdateModel model)
         {
@@ -114,7 +113,7 @@ namespace WebService.Controllers
             _dataService.DeletePost(post);
 
             return NoContent();
-        }
+        }*/
 
 
 

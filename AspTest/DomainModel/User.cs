@@ -10,6 +10,6 @@ namespace DomainModel
         public string DisplayedName { get; set; }
         public DateTime CreationDate { get; set; }
         public string Location { get; set; }
-        public int Age { get; set; }
+        public Nullable<int> Age { get; set; }
     }
 }

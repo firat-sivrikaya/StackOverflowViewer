@@ -19,7 +19,7 @@ namespace WebService.Controllers
             Mapper.Initialize( cfg => {
                 //cfg.CreateMap<Source, Dest>();
                 cfg.CreateMap<Post, PostListModel>();
-                //cfg.CreateMap<PostCreateOrUpdateModel, Post>();
+                cfg.CreateMap<Post, PostModel>();
             });
         }
 
