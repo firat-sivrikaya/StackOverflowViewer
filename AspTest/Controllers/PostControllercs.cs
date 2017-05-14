@@ -38,8 +38,8 @@ namespace WebService.Controllers
                 p.Url = Url.Link(nameof(GetPost), new{ p.Id });
             }
             
-            var prevlink = pageNumber + 1 > 1
-                ? Url.Link(nameof(GetPost), new { pageNumber = pageNumber - 1, pageSize })
+            var prevlink = pageNumber > 1
+                ? Url.Link(nameof(GetPosts), new { pageNumber = pageNumber - 1, pageSize })
                 : null;
 
             var total = _dataService.GetNumberOfPost();

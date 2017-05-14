@@ -37,7 +37,7 @@ namespace WebService.Controllers
             }
 
             var prevlink = pageNumber > 1
-                ? Url.Link(nameof(GetUser), new { pageNumber = pageNumber - 1, pageSize })
+                ? Url.Link(nameof(GetUsers), new { pageNumber = pageNumber - 1, pageSize })
                 : null;
 
             var total = _dataService.GetNumberOfUsers();
