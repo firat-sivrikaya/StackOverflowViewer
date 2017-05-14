@@ -8,6 +8,15 @@ Database and business logic are nearly completed. Right now, we are working on t
 
 ## Notes for contributors
 
+You need to create a table called `MarkedPosts` in order to use the latest functionalities. SQL code is provided below.
+
+```mysql
+CREATE TABLE `markedposts` (
+  `id` int(11) DEFAULT NULL,
+  `notes` varchar(256) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+```
+
 Body template for `CREATE, DELETE, UPDATE` operations that are used in marking posts:
 
 ```json
@@ -18,7 +27,7 @@ Body template for `CREATE, DELETE, UPDATE` operations that are used in marking p
 ```
 
 
-Don't forget to specify the content type while making calls.
+And, don't forget to specify the content type while making calls.
 
 ```http
 Content-Type: application/json
