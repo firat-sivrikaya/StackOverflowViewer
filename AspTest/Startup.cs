@@ -34,6 +34,7 @@ namespace AspTest
             services.AddSingleton<IPostDataService, StackOverflowDataService>();
             services.AddSingleton<IUserDataService, StackOverflowDataService>();
             services.AddSingleton<IMarkedPostDataService, StackOverflowDataService>();
+            services.AddSingleton<ITagDataService, StackOverflowDataService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

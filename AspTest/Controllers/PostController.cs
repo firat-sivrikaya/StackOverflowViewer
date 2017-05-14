@@ -11,14 +11,18 @@ namespace WebService.Controllers
     public class PostController : Controller
     {
         private readonly IPostDataService _dataService;
-        public PostController(IPostDataService dataService)
+        private readonly ITagPostDataService _dataService2;
+        
+        public PostController(IPostDataService dataService, ITagPostDataService dataService2)
         {
             _dataService = dataService;
+            _dataService2 = dataService2;
             //Mapper.CreateMap<DomainModel.Post, Models.PostModel>();
             Mapper.Initialize( cfg => {
                 //cfg.CreateMap<Source, Dest>();
                 cfg.CreateMap<Post, PostListModel>();
                 cfg.CreateMap<Post, PostModel>();
+                cfg.CreateMap<Tag, TagModel>();
             });
         }
 
@@ -70,10 +74,15 @@ namespace WebService.Controllers
         public IActionResult GetPost(int id)
         {
             var post = _dataService.GetPost(id);
+            var tagDomain = _dataService2.GetTagOfPost(id);
+            var tag = Mapper.Map<TagModel>(tagDomain);
 
             if (post == null) return NotFound();
 
             var model = Mapper.Map<PostModel>(post);
+
+            model.Tag = tag;
+            model.TagUrl = Url.Link(nameof(TagController.GetTag), new { tag.Url });
 
             return Ok(model);
         }

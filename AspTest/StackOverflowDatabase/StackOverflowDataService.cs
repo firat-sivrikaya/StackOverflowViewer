@@ -9,7 +9,8 @@ using DomainModel;
 
 namespace StackOverflowDatabase
 {
-        public class StackOverflowDataService : IPostDataService, IUserDataService, IMarkedPostDataService
+        public class StackOverflowDataService : IPostDataService, IUserDataService, IMarkedPostDataService, ITagDataService,
+        ITagPostDataService
         {
             public void CreateMarkedPost(MarkedPost post)
             {
@@ -70,6 +71,14 @@ namespace StackOverflowDatabase
                 }
             }
 
+            public TagPost GetTagOfPost(int id)
+            {
+                using (var context = new StackOverflowContext())
+                {
+                    return context.TagPost.Find(id);
+                }
+            }
+
             public Post GetPost(int id)
             {
                 using (var context = new StackOverflowContext())
@@ -78,6 +87,38 @@ namespace StackOverflowDatabase
                 }
             }
 
+            public Tag GetTag(int id)
+            {
+                using (var context = new StackOverflowContext())
+                {
+                    return context.Tag.Find(id);
+                }
+            }
+
+            public IList<Tag> GetTags(int pageNumber, int pageSize)
+            {
+                using (var context = new StackOverflowContext())
+                {
+                    return context.Tag
+                        //.OrderBy(x => x.Name)
+                        .Skip((pageNumber - 1) * pageSize)  // 
+                        .Take(pageSize) // limit in db
+                        .ToList();
+                }
+            }
+
+            public IList<TagPost> GetPostsByTag(int pageNumber, int pageSize)
+            {
+                using (var context = new StackOverflowContext())
+                {
+                    return context.TagPost
+                        //.OrderBy(x => x.Name)
+                        .Skip((pageNumber - 1) * pageSize)  // 
+                        .Take(pageSize) // limit in db
+                        .ToList();
+                }
+            }   
+
             public int GetNumberOfPost()
             {
                 using (var context = new StackOverflowContext())
@@ -85,6 +126,21 @@ namespace StackOverflowDatabase
                     return context.Post.Count();
                 }
             }
+
+            public int GetNumberOfTags()
+            {
+                using (var context = new StackOverflowContext())
+                {
+                    return context.Tag.Count();
+                }
+            }
+            public int GetNumberOfTagPosts()
+            {
+                using (var context = new StackOverflowContext())
+                {
+                    return context.TagPost.Count();
+                }
+            }                
 
             public int GetNumberOfMarkedPost()
             {

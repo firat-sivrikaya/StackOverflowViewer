@@ -14,5 +14,7 @@ namespace WebService.Models
         public DateTime CreationDate { get; set; }
         public int Score { get; set; }
         public string Body { get; set; }
+        public TagModel Tag{ get; set; }
+        public string TagUrl{ get; set; }
     }
 }
