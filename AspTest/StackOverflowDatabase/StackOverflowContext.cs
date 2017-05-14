@@ -15,7 +15,7 @@ namespace StackOverflowDatabase
 
         public DbSet<Tag> Tag { get; set; }
 
-        public DbSet<TagPost> TagPost {get; set;}
+        //public DbSet<TagPost> TagPost {get; set;}
 
         public DbSet<MarkedPost> MarkedPost {get; set;}
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -55,9 +55,9 @@ namespace StackOverflowDatabase
             modelBuilder.Entity<Tag>().Property(x => x.Id).HasColumnName("id");
             modelBuilder.Entity<Tag>().Property(x => x.TagName).HasColumnName("tagname");
             // Build models for tags posts
-            modelBuilder.Entity<TagPost>().ToTable("tags_post");
-            modelBuilder.Entity<TagPost>().Property(x => x.PostId).HasColumnName("postid");
-            modelBuilder.Entity<TagPost>().Property(x => x.TagId).HasColumnName("tagid");
+            //modelBuilder.Entity<TagPost>().ToTable("tags_post");
+            //modelBuilder.Entity<TagPost>().Property(x => x.PostId).HasColumnName("postid");
+            //modelBuilder.Entity<TagPost>().Property(x => x.TagId).HasColumnName("tagid");
         }
     }
 }

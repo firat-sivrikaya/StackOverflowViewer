@@ -10,7 +10,6 @@ namespace WebService.Models
         public string TagId { get; set; }
         public int PostId { get; set; }
         public IList<TagPostModel> TagPosts{ get; set; }
-
         public string Url { get; set; }
 
     }

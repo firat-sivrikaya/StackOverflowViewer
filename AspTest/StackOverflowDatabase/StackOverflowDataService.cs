@@ -9,8 +9,7 @@ using DomainModel;
 
 namespace StackOverflowDatabase
 {
-        public class StackOverflowDataService : IPostDataService, IUserDataService, IMarkedPostDataService, ITagDataService,
-        ITagPostDataService
+        public class StackOverflowDataService : IPostDataService, IUserDataService, IMarkedPostDataService, ITagDataService
         {
             public void CreateMarkedPost(MarkedPost post)
             {
@@ -70,14 +69,14 @@ namespace StackOverflowDatabase
                     return context.MarkedPost.Find(id);
                 }
             }
-
+            /* 
             public TagPost GetTagOfPost(int id)
             {
                 using (var context = new StackOverflowContext())
                 {
                     return context.TagPost.Find(id);
                 }
-            }
+            }*/
 
             public Post GetPost(int id)
             {
@@ -107,6 +106,7 @@ namespace StackOverflowDatabase
                 }
             }
 
+            /* 
             public IList<TagPost> GetPostsByTag(int pageNumber, int pageSize)
             {
                 using (var context = new StackOverflowContext())
@@ -117,7 +117,7 @@ namespace StackOverflowDatabase
                         .Take(pageSize) // limit in db
                         .ToList();
                 }
-            }   
+            }   */
 
             public int GetNumberOfPost()
             {
@@ -134,13 +134,14 @@ namespace StackOverflowDatabase
                     return context.Tag.Count();
                 }
             }
+            /* 
             public int GetNumberOfTagPosts()
             {
                 using (var context = new StackOverflowContext())
                 {
                     return context.TagPost.Count();
                 }
-            }                
+            } */             
 
             public int GetNumberOfMarkedPost()
             {
