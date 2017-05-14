@@ -5,14 +5,13 @@ using WebService.Models;
 using System.Collections.Generic;
 using AutoMapper;
 using DomainModel;
-
 namespace WebService.Controllers
 {
     [Route("api/[controller]")]
     public class PostController : Controller
     {
-        private readonly IMyDataService _dataService;
-        public PostController(IMyDataService dataService)
+        private readonly IPostDataService _dataService;
+        public PostController(IPostDataService dataService)
         {
             _dataService = dataService;
             //Mapper.CreateMap<DomainModel.Post, Models.PostModel>();
@@ -34,7 +33,12 @@ namespace WebService.Controllers
 
             var result = Mapper.Map<IEnumerable<PostListModel>>(data);
 
-            var prevlink = pageNumber > 1
+            foreach ( PostListModel p in result )
+            {
+                p.Url = Url.Link(nameof(GetPost), new{ p.Id });
+            }
+            
+            var prevlink = pageNumber + 1 > 1
                 ? Url.Link(nameof(GetPost), new { pageNumber = pageNumber - 1, pageSize })
                 : null;
 

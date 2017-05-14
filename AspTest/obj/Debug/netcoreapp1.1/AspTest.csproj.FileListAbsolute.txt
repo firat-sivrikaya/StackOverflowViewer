@@ -14,3 +14,11 @@
 /Users/djcedrics/cSharpProjects/AspTest/obj/Debug/netcoreapp1.1/AspTest.AssemblyInfo.cs
 /Users/djcedrics/cSharpProjects/AspTest/obj/Debug/netcoreapp1.1/AspTest.dll
 /Users/djcedrics/cSharpProjects/AspTest/obj/Debug/netcoreapp1.1/AspTest.pdb
+/Users/djcedrics/cSharpProjects/StackOverflowViewer/AspTest/bin/Debug/netcoreapp1.1/AspTest.deps.json
+/Users/djcedrics/cSharpProjects/StackOverflowViewer/AspTest/bin/Debug/netcoreapp1.1/AspTest.runtimeconfig.json
+/Users/djcedrics/cSharpProjects/StackOverflowViewer/AspTest/bin/Debug/netcoreapp1.1/AspTest.runtimeconfig.dev.json
+/Users/djcedrics/cSharpProjects/StackOverflowViewer/AspTest/bin/Debug/netcoreapp1.1/AspTest.dll
+/Users/djcedrics/cSharpProjects/StackOverflowViewer/AspTest/bin/Debug/netcoreapp1.1/AspTest.pdb
+/Users/djcedrics/cSharpProjects/StackOverflowViewer/AspTest/obj/Debug/netcoreapp1.1/AspTest.AssemblyInfo.cs
+/Users/djcedrics/cSharpProjects/StackOverflowViewer/AspTest/obj/Debug/netcoreapp1.1/AspTest.dll
+/Users/djcedrics/cSharpProjects/StackOverflowViewer/AspTest/obj/Debug/netcoreapp1.1/AspTest.pdb

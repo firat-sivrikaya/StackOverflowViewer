@@ -5,7 +5,6 @@ using WebService.Models;
 using System.Collections.Generic;
 using AutoMapper;
 using DomainModel;
-// to do 
 namespace WebService.Controllers
 {
     [Route("api/[controller]")]
@@ -31,7 +30,13 @@ namespace WebService.Controllers
             pageSize = pageSize > maxPageSize ? maxPageSize : pageSize;
             var data = _dataService.GetUsers(pageNumber, pageSize);
             var result = Mapper.Map<IEnumerable<UserListModel>>(data);
-                        var prevlink = pageNumber > 1
+
+            foreach ( UserListModel p in result )
+            {
+                p.Url = Url.Link(nameof(GetUser), new{ p.Id });
+            }
+
+            var prevlink = pageNumber > 1
                 ? Url.Link(nameof(GetUser), new { pageNumber = pageNumber - 1, pageSize })
                 : null;
 
@@ -44,6 +49,8 @@ namespace WebService.Controllers
                 : null;
 
             var curlink = Url.Link(nameof(GetUsers), new { pageNumber, pageSize });
+
+            
 
             var linkedResult = new
             {

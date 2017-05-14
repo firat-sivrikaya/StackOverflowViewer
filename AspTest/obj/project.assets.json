@@ -9916,16 +9916,16 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/djcedrics/cSharpProjects/AspTest/AspTest.csproj",
+      "projectUniqueName": "/Users/djcedrics/cSharpProjects/StackOverflowViewer/AspTest/AspTest.csproj",
       "projectName": "AspTest",
-      "projectPath": "/Users/djcedrics/cSharpProjects/AspTest/AspTest.csproj",
-      "outputPath": "/Users/djcedrics/cSharpProjects/AspTest/obj/",
+      "projectPath": "/Users/djcedrics/cSharpProjects/StackOverflowViewer/AspTest/AspTest.csproj",
+      "outputPath": "/Users/djcedrics/cSharpProjects/StackOverflowViewer/AspTest/obj/",
       "projectStyle": "PackageReference",
       "originalTargetFrameworks": [
         "netcoreapp1.1"
       ],
       "files": {
-        "lib/netcoreapp1.1/AspTest.dll": "/Users/djcedrics/cSharpProjects/AspTest/bin/placeholder/netcoreapp1.1/AspTest.dll"
+        "lib/netcoreapp1.1/AspTest.dll": "/Users/djcedrics/cSharpProjects/StackOverflowViewer/AspTest/bin/placeholder/netcoreapp1.1/AspTest.dll"
       },
       "frameworks": {
         "netcoreapp1.1": {
