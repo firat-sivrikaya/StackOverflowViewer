@@ -77,7 +77,8 @@ namespace WebService.Controllers
 
             return Ok(model);
         }
-
+        
+        /* 
         [HttpPost]
         public IActionResult CreatePost([FromBody] PostCreateOrUpdateModel model)
         {
@@ -120,7 +121,7 @@ namespace WebService.Controllers
             return NoContent();
         }
 
-
+        */
 
 
 

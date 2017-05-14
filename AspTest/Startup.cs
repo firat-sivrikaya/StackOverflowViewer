@@ -31,8 +31,9 @@ namespace AspTest
         {
             // Add framework services.
             services.AddMvc();
-            services.AddSingleton<IMyDataService, StackOverflowDataService>();
+            services.AddSingleton<IPostDataService, StackOverflowDataService>();
             services.AddSingleton<IUserDataService, StackOverflowDataService>();
+            services.AddSingleton<IMarkedPostDataService, StackOverflowDataService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

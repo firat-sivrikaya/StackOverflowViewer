@@ -7,7 +7,6 @@ namespace DomainModel
     public class MarkedPost
     {
         public int Id { get; set; }
-        public int PostId { get; set; }
         public string Notes { get; set; }
     }
 }

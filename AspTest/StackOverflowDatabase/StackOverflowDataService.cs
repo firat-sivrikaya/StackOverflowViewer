@@ -9,12 +9,14 @@ using DomainModel;
 
 namespace StackOverflowDatabase
 {
-        public class StackOverflowDataService : IMyDataService, IUserDataService
+        public class StackOverflowDataService : IPostDataService, IUserDataService, IMarkedPostDataService
         {
-            public void CreatePost(Post post)
+            public void CreateMarkedPost(MarkedPost post)
             {
                 using (var contex = new StackOverflowContext())
                 {
+                    contex.MarkedPost.Add(post);
+                    contex.SaveChanges();
                     //var nextId = contex.Categories.Max(x => x.Id) + 1;
                     //category.Id = nextId;
                     // Instead of this change the database to use auto increment on
@@ -27,16 +29,16 @@ namespace StackOverflowDatabase
                 }
             }
 
-            public void DeletePost(Post post)
+            public void DeleteMarkedPost(MarkedPost post)
             {
                 using (var contex = new StackOverflowContext())
                 {
-                    contex.Post.Remove(post);
+                    contex.MarkedPost.Remove(post);
                     contex.SaveChanges();
                 }
             }
 
-            public IList<Post> GetPost(int pageNumber, int pageSize)
+            public IList<Post> GetPosts(int pageNumber, int pageSize)
             {
                 using (var context = new StackOverflowContext())
                 {
@@ -45,6 +47,26 @@ namespace StackOverflowDatabase
                         .Skip((pageNumber - 1) * pageSize)  // 
                         .Take(pageSize) // limit in db
                         .ToList();
+                }
+            }
+
+            public IList<MarkedPost> GetMarkedPosts(int pageNumber, int pageSize)
+            {
+                using (var context = new StackOverflowContext())
+                {
+                    return context.MarkedPost
+                        //.OrderBy(x => x.Name)
+                        .Skip((pageNumber - 1) * pageSize)  // 
+                        .Take(pageSize) // limit in db
+                        .ToList();
+                }
+            }            
+
+            public MarkedPost GetMarkedPost(int id)
+            {
+                using (var context = new StackOverflowContext())
+                {
+                    return context.MarkedPost.Find(id);
                 }
             }
 
@@ -64,11 +86,19 @@ namespace StackOverflowDatabase
                 }
             }
 
-            public void UpdatePost(Post post)
+            public int GetNumberOfMarkedPost()
+            {
+                using (var context = new StackOverflowContext())
+                {
+                    return context.MarkedPost.Count();
+                }
+            }            
+
+            public void UpdateMarkedPost(MarkedPost post)
             {
                 using (var contex = new StackOverflowContext())
                 {
-                    contex.Post.Update(post);
+                    contex.MarkedPost.Update(post);
                     contex.SaveChanges();
                 }
             }

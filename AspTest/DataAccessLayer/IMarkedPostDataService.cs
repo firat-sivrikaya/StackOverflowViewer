@@ -5,11 +5,11 @@ namespace DataAccessLayer
 {
     public interface IMarkedPostDataService
     {
-            IList<Post> GetMarkedPosts(int pageNumber, int pageSize);
+            IList<MarkedPost> GetMarkedPosts(int pageNumber, int pageSize);
             MarkedPost GetMarkedPost(int id);
-            void CreatePost(MarkedPost post);
-            void UpdatePost(MarkedPost post);
-            void DeletePost(MarkedPost post);
+            void CreateMarkedPost(MarkedPost post);
+            void UpdateMarkedPost(MarkedPost post);
+            void DeleteMarkedPost(MarkedPost post);
             int GetNumberOfMarkedPost();
     }
  }

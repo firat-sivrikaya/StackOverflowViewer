@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 
 namespace WebService.Models
 {
-    public class MarkedPostCreateOrUpdateModel
+    public class MarkedPostCreateOrUpdateModel : MarkedPostModel
     {
-        public int PostId { get; set; }
+        public int Id { get; set; }
         public string Notes { get; set; }
     }
 }

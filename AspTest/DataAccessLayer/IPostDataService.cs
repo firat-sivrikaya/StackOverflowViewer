@@ -7,9 +7,9 @@ namespace DataAccessLayer
     {
             IList<Post> GetPosts(int pageNumber, int pageSize);
             Post GetPost(int id);
-            void CreatePost(Post post);
-            void UpdatePost(Post post);
-            void DeletePost(Post post);
+            //void CreatePost(Post post);
+            //void UpdatePost(Post post);
+            //void DeletePost(Post post);
             int GetNumberOfPost();
     }
  }
