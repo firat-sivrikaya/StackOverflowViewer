@@ -29,7 +29,7 @@ namespace WebService.Controllers
         {
             pageSize = pageSize > maxPageSize ? maxPageSize : pageSize;
 
-            var data = _dataService.GetPost(pageNumber, pageSize);
+            var data = _dataService.GetPosts(pageNumber, pageSize);
 
             var result = Mapper.Map<IEnumerable<PostListModel>>(data);
 
