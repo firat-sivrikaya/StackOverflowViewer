@@ -6,6 +6,7 @@ Stack Overflow Viewer Application (SOVA) is a single-page application that allow
 
 Database and business logic are nearly completed. Right now, we are working on the front-end.
 
+## Notes for contributors
 
 Body template for `CREATE, DELETE, UPDATE` operations that are used in marking posts:
 
