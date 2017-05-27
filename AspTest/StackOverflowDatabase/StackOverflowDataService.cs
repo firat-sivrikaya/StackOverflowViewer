@@ -105,6 +105,15 @@ namespace StackOverflowDatabase
                         .ToList();
                 }
             }
+            /* 
+            public IList<Post> GetPostsByTag(int pageNumber, int pageSize)
+            {
+                using (var context = new StackOverflowContext())
+                {
+                    return context.Post.Skip((pageNumber
+                     - 1) * pageSize).Take(pageSize).Where(context.Post.).ToList();
+                }
+            }*/
 
             /* 
             public IList<TagPost> GetPostsByTag(int pageNumber, int pageSize)
