@@ -11,12 +11,12 @@ namespace WebService.Controllers
     public class PostController : Controller
     {
         private readonly IPostDataService _dataService;
-        //private readonly ITagPostDataService _dataService2;
+        private readonly IUserDataService _dataService2;
         
-        public PostController(IPostDataService dataService)
+        public PostController(IPostDataService dataService, IUserDataService dataService2)
         {
             _dataService = dataService;
-            //_dataService2 = dataService2;
+            _dataService2 = dataService2;
             //Mapper.CreateMap<DomainModel.Post, Models.PostModel>();
             Mapper.Initialize( cfg => {
                 //cfg.CreateMap<Source, Dest>();
@@ -81,6 +81,7 @@ namespace WebService.Controllers
 
             var model = Mapper.Map<PostModel>(post);
 
+            model.OwnerName = _dataService2.GetUser(model.OwnerId).DisplayedName;
             //model.Tag = tag;
             //model.TagUrl = Url.Link(nameof(TagController.GetTag), new { tag.Url });
 

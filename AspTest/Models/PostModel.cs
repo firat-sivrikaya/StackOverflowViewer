@@ -11,6 +11,7 @@ namespace WebService.Models
         public int PostTypeId { get; set; }
         public Nullable<int> AcceptedAnswerId { get; set; }
         public int OwnerId { get; set; }
+        public string OwnerName{ get; set; }
         public DateTime CreationDate { get; set; }
         public int Score { get; set; }
         public string Body { get; set; }
