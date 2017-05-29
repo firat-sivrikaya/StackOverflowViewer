@@ -25,6 +25,11 @@ require(['knockout'], function (ko) {
         viewModel: { require: "app/components/getpost"},
         template: { require: "text!app/components/getpost.html"}
     });
+    
+    ko.components.register("tags", {
+        viewModel : {require: "app/components/tags"},
+        template : {require: "text!app/components/tags.html"}
+    });
    
     ko.applyBindings({});
 });
