@@ -24,7 +24,7 @@ define(['knockout', 'postman', 'jquery'], function (ko, postman, $) { // needed 
         };
         
         var makecall = $.ajax({
-                url: 'http://localhost:5000/api/post?pageNumber='+currentPage+'&pageSize=5',
+                url: 'http://localhost:5000/api/tag?pageNumber='+currentPage+'&pageSize=5',
                 type: "GET",
                 datatype: "json",
                 processData:false,
@@ -33,7 +33,7 @@ define(['knockout', 'postman', 'jquery'], function (ko, postman, $) { // needed 
                     for(var i = 0; i < 5; i++)
                     {
                         var elem = {
-                            title: res.result[i].title,
+                            title: res.result[i].tagName,
                             url: res.result[i].url
                         };
                         

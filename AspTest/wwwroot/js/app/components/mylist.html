@@ -1,4 +1,4 @@
-<div class="container c1">
+<!---<div class="container c1">
     <div class="row">
         <table class="table">
             <thead>
@@ -13,8 +13,30 @@
             </tbody>
         </table>
     </div>
-</div>
-
+</div>--->
+<h1>Questions</h1>
+<p>Here you can browse the questions and mark them as you wish</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Post Name</th>
+        </tr>
+    </thead>
+    <tbody data-bind="foreach: names">
+        <tr>
+            <td><a data-bind="attr: { href: $data.url }, text: $data.title"></a></td>
+        </tr>
+    </tbody>
+</table>
+<ul class="pagination">
+  <li class="disabled"><a data-bind="attr: { onclick: prevPageNav() }">&laquo;</a></li>
+  <!---<li class="active"><a href="#">1</a></li>
+  <li><a href="#">2</a></li>
+  <li><a href="#">3</a></li>
+  <li><a href="#">4</a></li>
+  <li><a href="#">5</a></li>--->
+  <li><a data-bind="attr: { onclick: nextPageNav() }">&raquo;</a></li>
+</ul>
 
 <!---<ul class="list-group" data-bind="foreach: names">
     <li class="list-group-item"><span data-bind="text: $data"></span></li>
