@@ -11,7 +11,6 @@ define(['knockout', 'postman', 'jquery'], function (ko, postman, jquery) { // ne
         let creationdate = ko.observable();
         let score = ko.observable();
         let body = ko.observable();
-        let title2 = "hello mars";
         let title = ko.observable();
         let closeddate = ko.observable();
         let posttypeid = ko.observable();

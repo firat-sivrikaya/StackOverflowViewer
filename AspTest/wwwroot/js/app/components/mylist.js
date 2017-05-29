@@ -1,12 +1,30 @@
-define(['knockout', 'postman', 'jquery'], function (ko, postman, jquery) { // needed fro require modules
+define(['knockout', 'postman', 'jquery'], function (ko, postman, $) { // needed fro require modules
     return function (params) { // needed for knockout components
         let names = ko.observableArray();
         let urls = ko.observableArray();
         let message = ko.observable();
         let selectedName = ko.observable();
+        let currentPage = 1;
+        let prevPage = 0;
+        let nextPage = 2;
+        var nextPageNav = function(){
+            currentPage = nextPage;
+            nextPage++;
+            prevPage++;
+            console.log("Get to next page");
+            //location.reload();
+        };
         
-        $.ajax({
-                url: 'http://localhost:5000/api/post',
+        var prevPageNav = function(){
+            currentPage = prevPage;
+            nextPage--;
+            prevPage--;
+            console.log("Get to prev page");
+            //location.reload();
+        };
+        
+        var makecall = $.ajax({
+                url: 'http://localhost:5000/api/post?pageNumber='+currentPage+'&pageSize=5',
                 type: "GET",
                 datatype: "json",
                 processData:false,
@@ -48,7 +66,9 @@ define(['knockout', 'postman', 'jquery'], function (ko, postman, jquery) { // ne
             selectName,
             selectedName,
             isSelected,
-            urls
+            urls,
+            nextPageNav,
+            prevPageNav
         };
     };
 });

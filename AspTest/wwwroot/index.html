@@ -22,9 +22,9 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
             <li class="active"><a href="#">Home <span class="sr-only">(current)</span></a></li>
-            <li><a href="#">Questions</a></li>
-            <li><a href="#">Tags</a></li>
-            <li><a href="#">Users</a></li>
+            <li><a href="#" data-page="mylist">Questions</a></li>
+            <li><a href="#" data-page="tags">Tags</a></li>
+            <li><a href="#" data-page="users">Users</a></li>
             <!---<li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
@@ -50,23 +50,11 @@
         </div>
       </div>
     </nav>
-    <div class="container">
-        <div class="row">
-            <my-list></my-list>
-                    <ul class="pagination">
-          <li class="disabled"><a href="#">&laquo;</a></li>
-          <li class="active"><a href="#">1</a></li>
-          <li><a href="#">2</a></li>
-          <li><a href="#">3</a></li>
-          <li><a href="#">4</a></li>
-          <li><a href="#">5</a></li>
-          <li><a href="#">&raquo;</a></li>
-        </ul>
-        </div>
-    </div>
+    <my-list></my-list>
     <get-post></get-post>
     <script data-main="js/main.js" src="js/lib/requirejs/require.js"></script>
     <script src="js/lib/jQuery/dist/jquery.min.js"></script>
     <script data-main="js/main.js" src="js/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="js/app/navbar.js"></script>
 </body>
 </html>
