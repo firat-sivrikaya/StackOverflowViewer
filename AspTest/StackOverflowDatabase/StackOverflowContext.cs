@@ -12,7 +12,7 @@ namespace StackOverflowDatabase
     {
         public DbSet<Post> Post { get; set; }
         public DbSet<User> User { get; set; }
-
+        public DbSet<Comment> Comment {get; set;}
         public DbSet<Tag> Tag { get; set; }
 
         //public DbSet<TagPost> TagPost {get; set;}
@@ -22,7 +22,7 @@ namespace StackOverflowDatabase
         {
             base.OnConfiguring(optionsBuilder);
             // Modify database info in order to run it in your own environment
-            optionsBuilder.UseMySql("server=localhost;database=testmigration;uid=root;pwd=pass");
+            optionsBuilder.UseMySql("server=localhost;database=testmigration;uid=root;pwd=swordfish");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -54,6 +54,14 @@ namespace StackOverflowDatabase
             modelBuilder.Entity<Tag>().ToTable("tags");
             modelBuilder.Entity<Tag>().Property(x => x.Id).HasColumnName("id");
             modelBuilder.Entity<Tag>().Property(x => x.TagName).HasColumnName("tagname");
+            // Build models for comments
+            modelBuilder.Entity<Comment>().ToTable("comments");
+            modelBuilder.Entity<Comment>().Property(x => x.Id).HasColumnName("id");
+            modelBuilder.Entity<Comment>().Property(x => x.Score).HasColumnName("score");
+            modelBuilder.Entity<Comment>().Property(x => x.Body).HasColumnName("body");
+            modelBuilder.Entity<Comment>().Property(x => x.Creation).HasColumnName("creation");
+            modelBuilder.Entity<Comment>().Property(x => x.UserId).HasColumnName("userid");
+            modelBuilder.Entity<Comment>().Property(x => x.PostId).HasColumnName("postid");
             // Build models for tags posts
             //modelBuilder.Entity<TagPost>().ToTable("tags_post");
             //modelBuilder.Entity<TagPost>().Property(x => x.PostId).HasColumnName("postid");

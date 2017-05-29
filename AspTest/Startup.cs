@@ -32,6 +32,7 @@ namespace AspTest
         {
             // Add framework services.
             services.AddMvc();
+            services.AddSingleton<ICommentDataService, StackOverflowDataService>();
             services.AddSingleton<IPostDataService, StackOverflowDataService>();
             services.AddSingleton<IUserDataService, StackOverflowDataService>();
             services.AddSingleton<IMarkedPostDataService, StackOverflowDataService>();

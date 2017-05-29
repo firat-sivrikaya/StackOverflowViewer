@@ -9,7 +9,7 @@ using DomainModel;
 
 namespace StackOverflowDatabase
 {
-        public class StackOverflowDataService : IPostDataService, IUserDataService, IMarkedPostDataService, ITagDataService
+        public class StackOverflowDataService : IPostDataService, IUserDataService, IMarkedPostDataService, ITagDataService, ICommentDataService
         {
             public void CreateMarkedPost(MarkedPost post)
             {
@@ -35,6 +35,18 @@ namespace StackOverflowDatabase
                 {
                     contex.MarkedPost.Remove(post);
                     contex.SaveChanges();
+                }
+            }
+
+            public IList<Comment> GetComments(int pageNumber, int pageSize)
+            {
+                using (var context = new StackOverflowContext())
+                {
+                    return context.Comment
+                        //.OrderBy(x => x.Name)
+                        .Skip((pageNumber - 1) * pageSize)  // 
+                        .Take(pageSize) // limit in db
+                        .ToList();
                 }
             }
 
@@ -77,6 +89,14 @@ namespace StackOverflowDatabase
                     return context.TagPost.Find(id);
                 }
             }*/
+
+            public Comment GetComment(int id)
+            {
+                using (var context = new StackOverflowContext())
+                {
+                    return context.Comment.Find(id);
+                }
+            }
 
             public Post GetPost(int id)
             {
@@ -127,6 +147,13 @@ namespace StackOverflowDatabase
                         .ToList();
                 }
             }   */
+            public int GetNumberOfComment()
+            {
+                using (var context = new StackOverflowContext())
+                {
+                    return context.Comment.Count();
+                }
+            }
 
             public int GetNumberOfPost()
             {
