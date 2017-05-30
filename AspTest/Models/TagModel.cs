@@ -11,5 +11,7 @@ namespace WebService.Models
         public string TagName { get; set; }
 
         public IList<PostModel> TagPosts{ get; set; }
+
+        public int PostCount { get; set; }
     }
 }

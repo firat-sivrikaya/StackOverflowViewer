@@ -119,12 +119,13 @@ namespace StackOverflowDatabase
                 using (var context = new StackOverflowContext())
                 {
                     return context.Tag
-                        //.OrderBy(x => x.Name)
+                        .OrderByDescending(x => x.PostCount)
                         .Skip((pageNumber - 1) * pageSize)  // 
                         .Take(pageSize) // limit in db
                         .ToList();
                 }
             }
+
             /* 
             public IList<Post> GetPostsByTag(int pageNumber, int pageSize)
             {
