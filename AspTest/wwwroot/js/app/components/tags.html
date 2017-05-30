@@ -1,24 +1,30 @@
 <h2>Tags</h2>
-<table class="table">
-    <thead>
-        <tr>
-            <th>Tag Name</th>
-            <th>Number of Posts</th>
-        </tr>
-    </thead>
-    <tbody data-bind="foreach: names">
-        <tr>
-            <td><a data-bind="attr: { href: $data.url }, text: $data.title"></a></td>
-            <td><span data-bind="text: $data.postCount"></span></td>
-        </tr>
-    </tbody>
-</table>
-<ul class="pagination">
-  <li class="disabled"><a data-bind="attr: { onclick: prevPageNav() }">&laquo;</a></li>
-  <!---<li class="active"><a href="#">1</a></li>
-  <li><a href="#">2</a></li>
-  <li><a href="#">3</a></li>
-  <li><a href="#">4</a></li>
-  <li><a href="#">5</a></li>--->
-  <li><a data-bind="attr: { onclick: nextPageNav() }">&raquo;</a></li>
-</ul>
+<div class="col-lg-4">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Tag Name</th>
+                <th>Number of Posts</th>
+            </tr>
+        </thead>
+        <tbody data-bind="foreach: names">
+            <tr>
+                <td><a data-bind="attr: { href: $data.url }, text: $data.title"></a></td>
+                <td><span data-bind="text: $data.postCount"></span></td>
+            </tr>
+        </tbody>
+    </table>
+    <ul class="pagination">
+      <li class="disabled"><a data-bind="attr: { onclick: prevPageNav() }">&laquo;</a></li>
+      <!---<li class="active"><a href="#">1</a></li>
+      <li><a href="#">2</a></li>
+      <li><a href="#">3</a></li>
+      <li><a href="#">4</a></li>
+      <li><a href="#">5</a></li>--->
+      <li><a data-bind="attr: { onclick: nextPageNav() }">&raquo;</a></li>
+    </ul>    
+</div>
+
+<div class="col-lg-8">
+    <div id="chartContainer" style="height: 300px; width: 100%;"></div>
+</div>

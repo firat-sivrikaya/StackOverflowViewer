@@ -23,6 +23,8 @@ define(['knockout', 'postman', 'jquery'], function (ko, postman, $) { // needed 
             //location.reload();
         };
         
+
+        
         var makecall = $.ajax({
                 url: 'http://localhost:5000/api/tag?pageNumber='+currentPage+'&pageSize=5',
                 type: "GET",
@@ -43,11 +45,35 @@ define(['knockout', 'postman', 'jquery'], function (ko, postman, $) { // needed 
                     }
                     //names(res.result[0].title);
                     console.log("Success!!");
+                    
+                    var chart = new CanvasJS.Chart("chartContainer", {
+                            title:{
+                                text: "Top 5 Tags"              
+                            },
+                            data: [              
+                            {
+                                // Change type to "doughnut", "line", "splineArea", etc.
+                                type: "column",
+                                dataPoints: [
+                                    { label: names()[0].title,  y: names()[0].postCount  },
+                                    { label: names()[1].title, y: names()[1].postCount  },
+                                    { label: names()[2].title, y: names()[2].postCount  },
+                                    { label: names()[3].title,  y: names()[3].postCount  },
+                                    { label: names()[4].title,  y: names()[4].postCount  }
+                                ]
+                            }
+                            ]
+                    });
+                    chart.render();
                 },
                 failure: function (result){
                     console.log("Error retrieving");
                 }
         });
+        
+
+        
+        
         
         let selectName = function (element) {
             console.log(element);
