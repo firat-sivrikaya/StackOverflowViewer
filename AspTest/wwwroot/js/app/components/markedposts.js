@@ -22,7 +22,9 @@ define(['knockout', 'postman', 'jquery'], function (ko, postman, $) { // needed 
             //location.reload();
         };
         
-        var makecall = $.ajax({
+        var makecall = function (){
+            names.removeAll();
+            $.ajax({
                 url: 'http://localhost:5000/api/markedpost?pageNumber='+currentPage+'&pageSize=5',
                 type: "GET",
                 datatype: "json",
@@ -47,7 +49,11 @@ define(['knockout', 'postman', 'jquery'], function (ko, postman, $) { // needed 
                 failure: function (result){
                     console.log("Error retrieving");
                 }
-        });
+            });//end of ajax get
+        };//end of makecall
+        
+        makecall();
+        
         
         var markpostclick = $("#markpostform").submit( function(event) {
             event.preventDefault();
@@ -75,7 +81,7 @@ define(['knockout', 'postman', 'jquery'], function (ko, postman, $) { // needed 
                   error: function(e){
                       console.log(e);
                   }
-                });                   
+                });
             }
             else{
                 console.log("Request made: " + values[1].value);
@@ -92,6 +98,9 @@ define(['knockout', 'postman', 'jquery'], function (ko, postman, $) { // needed 
                   }
                 });   
             }
+            
+            // Refresh the table
+            makecall();
    
             
             /*
@@ -145,7 +154,8 @@ define(['knockout', 'postman', 'jquery'], function (ko, postman, $) { // needed 
             isSelected,
             urls,
             nextPageNav,
-            prevPageNav
+            prevPageNav,
+            makecall
         };
     };
 });

@@ -35,6 +35,7 @@ define(['knockout', 'postman', 'jquery'], function (ko, postman, $) { // needed 
                     for(var i = 0; i < 5; i++)
                     {
                         var elem = {
+                            id : res.result[i].id,
                             title: res.result[i].title,
                             url: res.result[i].url
                         };
@@ -54,7 +55,7 @@ define(['knockout', 'postman', 'jquery'], function (ko, postman, $) { // needed 
             console.log("button clicked"); 
         };
         
-        $(document).ready(function() {
+        /*$(document).ready(function() {
                 $("#postbtn").on("mousedown", function(){
                     console.log("inside jquery");
                     if ($(this).text() === "Mark" )
@@ -76,7 +77,7 @@ define(['knockout', 'postman', 'jquery'], function (ko, postman, $) { // needed 
                 });               
             
                              
-            });
+        });*/
     
         
         
