@@ -36,7 +36,10 @@ require(['knockout'], function (ko) {
         template : {require: "text!app/components/markedposts.html"}
     });
     
-    
+    ko.components.register("users", {
+        viewModel : {require: "app/components/users"},
+        template : {require: "text!app/components/users.html"}
+    });
    
     ko.applyBindings({});
 });

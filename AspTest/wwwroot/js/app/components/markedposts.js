@@ -33,7 +33,8 @@ define(['knockout', 'postman', 'jquery'], function (ko, postman, $) { // needed 
                     {
                         var elem = {
                             title: res.result[i].postTitle,
-                            url: res.result[i].url
+                            url: res.result[i].url,
+                            notes: res.result[i].notes
                         };
                         
                         names.push(elem);

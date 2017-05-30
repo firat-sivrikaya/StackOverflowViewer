@@ -4,12 +4,14 @@
     <thead>
         <tr>
             <th>Post Name</th>
+            <th>Notes</th>
             <th>Mark Post</th>
         </tr>
     </thead>
     <tbody data-bind="foreach: names">
         <tr>
             <td><a data-bind="attr: { href: $data.url }, text: $data.title"></a></td>
+            <td><span data-bind="text: $data.notes"></span></td>
             <td><button class="btn btn-default" id="postbtn" data-bind="click: $parent.btnclick">Unmark</button></td>
         </tr>
     </tbody>
