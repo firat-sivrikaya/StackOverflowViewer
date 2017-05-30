@@ -29,7 +29,7 @@ define(['knockout', 'postman', 'jquery'], function (ko, postman, $) { // needed 
                 processData:false,
                 contentType: "application/json; charset=utf-8",
                 success: function (res){
-                    for(var i = 0; i < 2; i++)
+                    for(var i = 0; i < res.totalMarked; i++)
                     {
                         var elem = {
                             id: res.result[i].id,
@@ -49,94 +49,80 @@ define(['knockout', 'postman', 'jquery'], function (ko, postman, $) { // needed 
                 }
         });
         
-        var btnclick = function(){
-            $(document).ready(function() {
-                $("button").on("click", function(){
-                    console.log("inside jquery");
-                    if ($(this).text() === "Mark" )
-                    {
-                        console.log("mark found");
-                        $(this).text("Unmark");
-                        //$(this).find("span").removeClass("glyphicon-plus");
-                        //$(this).find("span").addClass("glyphicon-minus");
-                        return;
-                    }
-                    else if( $(this).text() === "Unmark" )
-                    {
-                        console.log("unmark found");
-                        $(this).text("Mark");
-                        //$(this).find("span").removeClass("glyphicon-minus");
-                        //$(this).find("span").addClass("glyphicon-plus");
-                        return;
-                    }   
-                });               
+        var markpostclick = $("#markpostform").submit( function(event) {
+            event.preventDefault();
+            // Get the form data
+            var values = $(this).serializeArray();
+            // values[0].value : postid
+            // values[1].value : method (POST, PUT, DELETE)
+            // values[2].value : notes
+            console.log(values[0].value);
+            console.log(values[1].value);
+            console.log(values[2].value);
             
-            console.log("button clicked");                  
-            });
-        };
-        
-        
-        $("button").on("click", function(){
-                console.log("inside jquery");
-                if ($(this).text() === "Mark" )
-                {
-                    console.log("mark found");
-                    $(this).text("Unmark");
-                    //$(this).find("span").removeClass("glyphicon-plus");
-                    //$(this).find("span").addClass("glyphicon-minus");
-                    return;
-                }
-                /*else if( $(this).text() === "Unmark" )
-                {
-                    console.log("unmark found");
-                    $(this).text("Mark");
-                    //$(this).find("span").removeClass("glyphicon-minus");
-                    //$(this).find("span").addClass("glyphicon-plus");
-                    return;
-                }    */ 
-        });
-        
-        
-        var btnpress = ko.observable(function(){
-            $("button").on("click", function(){
-                if ($(this).find("span").hasClass("glyphicon-plus") )
-                {
-                    console.log("plus found");
-                    $(this).find("span").removeClass("glyphicon-plus");
-                    $(this).find("span").addClass("glyphicon-minus");
-                    return;
-                }
-                else if( $(this).find("span").hasClass("glyphicon-minus") )
-                {
-                    console.log("minus found");
-                    $(this).find("span").removeClass("glyphicon-minus");
-                    $(this).find("span").addClass("glyphicon-plus");
-                    return;
-                }     
-            });            
-        }, this);
-                                       
-        $("button").on("click", function(){
-            if ($(this).find("span").hasClass("glyphicon-plus") )
-            {
-                console.log("plus found");
-                $(this).find("span").removeClass("glyphicon-plus");
-                $(this).find("span").addClass("glyphicon-minus");
-                return;
+            var jsonData= {"id": values[0].value, "notes": values[2].value };  
+            
+            if ( values[1].value === "POST"){
+                console.log("Request made: " + values[1].value);
+                var request = $.ajax({
+                  url: "http://localhost:5000/api/markedpost",
+                  type: values[1].value,
+                  data: JSON.stringify({
+                      id: values[0].value,
+                      notes: values[2].value
+                  }),
+                  contentType: 'application/json; charset=utf-8',
+                  error: function(e){
+                      console.log(e);
+                  }
+                });                   
             }
-            else if( $(this).find("span").hasClass("glyphicon-minus") )
-            {
-                console.log("minus found");
-                $(this).find("span").removeClass("glyphicon-minus");
-                $(this).find("span").addClass("glyphicon-plus");
-                return;
-            }     
+            else{
+                console.log("Request made: " + values[1].value);
+                var request = $.ajax({
+                  url: "http://localhost:5000/api/markedpost/" + values[0].value,
+                  type: values[1].value,
+                  data: JSON.stringify({
+                      id: values[0].value,
+                      notes: values[2].value
+                  }),
+                  contentType: 'application/json; charset=utf-8',
+                  error: function(e){
+                      console.log(e);
+                  }
+                });   
+            }
+   
+            
+            /*
+            var settings = {
+              "async": true,
+              "crossDomain": true,
+              "url": "http://localhost:5000/api/markedpost",
+              "type": values[1].value,
+              "datatype": "json",
+              "headers": {
+                "content-type": "application/json; charset=utf-8",
+                "cache-control": "no-cache"
+              },
+              "processData": false,
+              "data": {
+                "id" : values[0].value,
+                "notes": values[2].value
+              },
+              "success" : "Successful!",
+              "failure" : "Failed!"
+            }
+
+            $.ajax(settings).done(function (response) {
+              console.log(response);
+            });*/
+            
+            
+            console.log(values);
         });
+            
         
-        var plusMinus = ko.pureComputed(function(){
-            
-            
-        });
         
         let selectName = function (element) {
             console.log(element);
@@ -149,15 +135,7 @@ define(['knockout', 'postman', 'jquery'], function (ko, postman, $) { // needed 
         postman.subscribe("someEvent", function (data) {
             message(data.msg);
         });
-        
-        
-        
-
-        
-        $("button#postbtn").on("click", function(event){
            
-        });
-        
 
         return {
             names,
@@ -167,8 +145,7 @@ define(['knockout', 'postman', 'jquery'], function (ko, postman, $) { // needed 
             isSelected,
             urls,
             nextPageNav,
-            prevPageNav,
-            btnclick
+            prevPageNav
         };
     };
 });

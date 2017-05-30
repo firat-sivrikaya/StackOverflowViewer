@@ -51,8 +51,11 @@ define(['knockout', 'postman', 'jquery'], function (ko, postman, $) { // needed 
         });
         
         var btnclick = function(){
-            $(document).ready(function() {
-                $("button").on("click", function(){
+            console.log("button clicked"); 
+        };
+        
+        $(document).ready(function() {
+                $("#postbtn").on("mousedown", function(){
                     console.log("inside jquery");
                     if ($(this).text() === "Mark" )
                     {
@@ -60,7 +63,7 @@ define(['knockout', 'postman', 'jquery'], function (ko, postman, $) { // needed 
                         $(this).text("Unmark");
                         //$(this).find("span").removeClass("glyphicon-plus");
                         //$(this).find("span").addClass("glyphicon-minus");
-                        return;
+                        
                     }
                     else if( $(this).text() === "Unmark" )
                     {
@@ -68,76 +71,14 @@ define(['knockout', 'postman', 'jquery'], function (ko, postman, $) { // needed 
                         $(this).text("Mark");
                         //$(this).find("span").removeClass("glyphicon-minus");
                         //$(this).find("span").addClass("glyphicon-plus");
-                        return;
+                        
                     }   
                 });               
             
-            console.log("button clicked");                  
+                             
             });
-        };
+    
         
-        
-        $("button").on("click", function(){
-                console.log("inside jquery");
-                if ($(this).text() === "Mark" )
-                {
-                    console.log("mark found");
-                    $(this).text("Unmark");
-                    //$(this).find("span").removeClass("glyphicon-plus");
-                    //$(this).find("span").addClass("glyphicon-minus");
-                    return;
-                }
-                /*else if( $(this).text() === "Unmark" )
-                {
-                    console.log("unmark found");
-                    $(this).text("Mark");
-                    //$(this).find("span").removeClass("glyphicon-minus");
-                    //$(this).find("span").addClass("glyphicon-plus");
-                    return;
-                }    */ 
-        });
-        
-        
-        var btnpress = ko.observable(function(){
-            $("button").on("click", function(){
-                if ($(this).find("span").hasClass("glyphicon-plus") )
-                {
-                    console.log("plus found");
-                    $(this).find("span").removeClass("glyphicon-plus");
-                    $(this).find("span").addClass("glyphicon-minus");
-                    return;
-                }
-                else if( $(this).find("span").hasClass("glyphicon-minus") )
-                {
-                    console.log("minus found");
-                    $(this).find("span").removeClass("glyphicon-minus");
-                    $(this).find("span").addClass("glyphicon-plus");
-                    return;
-                }     
-            });            
-        }, this);
-                                       
-        $("button").on("click", function(){
-            if ($(this).find("span").hasClass("glyphicon-plus") )
-            {
-                console.log("plus found");
-                $(this).find("span").removeClass("glyphicon-plus");
-                $(this).find("span").addClass("glyphicon-minus");
-                return;
-            }
-            else if( $(this).find("span").hasClass("glyphicon-minus") )
-            {
-                console.log("minus found");
-                $(this).find("span").removeClass("glyphicon-minus");
-                $(this).find("span").addClass("glyphicon-plus");
-                return;
-            }     
-        });
-        
-        var plusMinus = ko.pureComputed(function(){
-            
-            
-        });
         
         let selectName = function (element) {
             console.log(element);
@@ -153,11 +94,6 @@ define(['knockout', 'postman', 'jquery'], function (ko, postman, $) { // needed 
         
         
         
-
-        
-        $("button#postbtn").on("click", function(event){
-           
-        });
         
 
         return {

@@ -64,7 +64,8 @@ namespace WebService.Controllers
                     new { name = "prev", url = prevlink },
                     new { name = "next", url = nextlink },
                     new { name = "cur", url = curlink }
-                }
+                },
+                TotalMarked = total
             };
 
             return Ok(linkedResult);

@@ -10,7 +10,7 @@
                     <th>Post ID</th>
                     <th>Post Name</th>
                     <th>Notes</th>
-                    <th>Mark Post</th>
+                    <!---<th>Mark Post</th>--->
                 </tr>
             </thead>
             <tbody data-bind="foreach: names">
@@ -18,7 +18,7 @@
                     <td><span data-bind="text: $data.id"></span></td>
                     <td><a data-bind="attr: { href: $data.url }, text: $data.title"></a></td>
                     <td><span data-bind="text: $data.notes"></span></td>
-                    <td><button class="btn btn-default" id="postbtn" data-bind="click: $parent.btnclick">Unmark</button></td>
+                    <!---<td><button class="btn btn-default" id="postbtn" data-bind="click: $parent.btnclick">Unmark</button></td>-->
                 </tr>
             </tbody>
         </table>
@@ -28,23 +28,23 @@
     <p>You can mark/unmark the posts manually by using the form below.</p>
     <div class="c1">
         
-        <form>
+        <form id="markpostform">
           <div class="form-group">
             <label for="postidInput">Post ID</label>
-            <input type="text" class="form-control" id="postidInput" aria-describedby="emailHelp" placeholder="ex. 13274983" required>
-            <small id="emailHelp" class="form-text text-muted">Make sure that you have entered the post id correctly, otherwise it will result in an error.</small>
+            <input name="postid" type="text" class="form-control" id="postidInput" aria-describedby="postidHelp" placeholder="ex. 2180354" required>
+            <small id="postidHelp" class="form-text text-muted">Make sure that you have entered the post id correctly, otherwise it will result in an error.</small>
           </div>
           <div class="form-group">
             <label for="markOptionSelect">Select operation</label>
-            <select class="form-control" id="markOptionSelect" required>
-              <option>Mark new post</option>
-              <option>Delete marked post</option>
-              <option>Update marked post</option>
+            <select name="markoption" class="form-control" id="markOptionSelect" required>
+              <option name="POST" value="POST">Mark new post</option>
+              <option name="DELETE" value="DELETE">Delete marked post</option>
+              <option name="PUT" value="PUT">Update marked post</option>
             </select>
           </div>
           <div class="form-group">
-            <label for="postNotesArea">Notes</label>
-            <textarea class="form-control" id="postNotesArea" rows="3"></textarea>
+            <label for="notes">Notes</label>
+            <textarea name="notes" class="form-control" id="notes" rows="3"></textarea>
           </div>
           <button type="submit" class="btn btn-primary">Submit</button>
         </form>
