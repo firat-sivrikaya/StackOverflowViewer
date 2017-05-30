@@ -62,14 +62,14 @@ define(['knockout', 'postman', 'jquery'], function (ko, postman, $) { // needed 
                         //$(this).find("span").addClass("glyphicon-minus");
                         return;
                     }
-                    /*else if( $(this).text() === "Unmark" )
+                    else if( $(this).text() === "Unmark" )
                     {
                         console.log("unmark found");
                         $(this).text("Mark");
                         //$(this).find("span").removeClass("glyphicon-minus");
                         //$(this).find("span").addClass("glyphicon-plus");
                         return;
-                    }    */ 
+                    }   
                 });               
             
             console.log("button clicked");                  

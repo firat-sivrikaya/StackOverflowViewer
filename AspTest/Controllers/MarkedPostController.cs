@@ -11,9 +11,11 @@ namespace WebService.Controllers
     public class MarkedPostController : Controller
     {
         private readonly IMarkedPostDataService _dataService;
-        public MarkedPostController(IMarkedPostDataService dataService)
+        private readonly IPostDataService _dataService2;
+        public MarkedPostController(IMarkedPostDataService dataService, IPostDataService dataService2)
         {
             _dataService = dataService;
+            _dataService2 = dataService2;
             //Mapper.CreateMap<DomainModel.Post, Models.PostModel>();
             Mapper.Initialize( cfg => {
                 //cfg.CreateMap<Source, Dest>();
@@ -37,6 +39,7 @@ namespace WebService.Controllers
             foreach ( MarkedPostListModel p in result )
             {
                 p.Url = Url.Link(nameof(IPostDataService.GetPost), new{ p.Id });
+                p.PostTitle = _dataService2.GetPost(p.Id).Title;
             }
             
             var prevlink = pageNumber > 1

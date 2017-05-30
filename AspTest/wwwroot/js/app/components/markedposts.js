@@ -14,7 +14,6 @@ define(['knockout', 'postman', 'jquery'], function (ko, postman, $) { // needed 
             console.log("Get to next page");
             //location.reload();
         };
-        
         var prevPageNav = function(){
             currentPage = prevPage;
             nextPage--;
@@ -24,16 +23,16 @@ define(['knockout', 'postman', 'jquery'], function (ko, postman, $) { // needed 
         };
         
         var makecall = $.ajax({
-                url: 'http://localhost:5000/api/post?pageNumber='+currentPage+'&pageSize=5',
+                url: 'http://localhost:5000/api/markedpost?pageNumber='+currentPage+'&pageSize=5',
                 type: "GET",
                 datatype: "json",
                 processData:false,
                 contentType: "application/json; charset=utf-8",
                 success: function (res){
-                    for(var i = 0; i < 5; i++)
+                    for(var i = 0; i < 2; i++)
                     {
                         var elem = {
-                            title: res.result[i].title,
+                            title: res.result[i].postTitle,
                             url: res.result[i].url
                         };
                         
@@ -48,6 +47,95 @@ define(['knockout', 'postman', 'jquery'], function (ko, postman, $) { // needed 
                 }
         });
         
+        var btnclick = function(){
+            $(document).ready(function() {
+                $("button").on("click", function(){
+                    console.log("inside jquery");
+                    if ($(this).text() === "Mark" )
+                    {
+                        console.log("mark found");
+                        $(this).text("Unmark");
+                        //$(this).find("span").removeClass("glyphicon-plus");
+                        //$(this).find("span").addClass("glyphicon-minus");
+                        return;
+                    }
+                    else if( $(this).text() === "Unmark" )
+                    {
+                        console.log("unmark found");
+                        $(this).text("Mark");
+                        //$(this).find("span").removeClass("glyphicon-minus");
+                        //$(this).find("span").addClass("glyphicon-plus");
+                        return;
+                    }   
+                });               
+            
+            console.log("button clicked");                  
+            });
+        };
+        
+        
+        $("button").on("click", function(){
+                console.log("inside jquery");
+                if ($(this).text() === "Mark" )
+                {
+                    console.log("mark found");
+                    $(this).text("Unmark");
+                    //$(this).find("span").removeClass("glyphicon-plus");
+                    //$(this).find("span").addClass("glyphicon-minus");
+                    return;
+                }
+                /*else if( $(this).text() === "Unmark" )
+                {
+                    console.log("unmark found");
+                    $(this).text("Mark");
+                    //$(this).find("span").removeClass("glyphicon-minus");
+                    //$(this).find("span").addClass("glyphicon-plus");
+                    return;
+                }    */ 
+        });
+        
+        
+        var btnpress = ko.observable(function(){
+            $("button").on("click", function(){
+                if ($(this).find("span").hasClass("glyphicon-plus") )
+                {
+                    console.log("plus found");
+                    $(this).find("span").removeClass("glyphicon-plus");
+                    $(this).find("span").addClass("glyphicon-minus");
+                    return;
+                }
+                else if( $(this).find("span").hasClass("glyphicon-minus") )
+                {
+                    console.log("minus found");
+                    $(this).find("span").removeClass("glyphicon-minus");
+                    $(this).find("span").addClass("glyphicon-plus");
+                    return;
+                }     
+            });            
+        }, this);
+                                       
+        $("button").on("click", function(){
+            if ($(this).find("span").hasClass("glyphicon-plus") )
+            {
+                console.log("plus found");
+                $(this).find("span").removeClass("glyphicon-plus");
+                $(this).find("span").addClass("glyphicon-minus");
+                return;
+            }
+            else if( $(this).find("span").hasClass("glyphicon-minus") )
+            {
+                console.log("minus found");
+                $(this).find("span").removeClass("glyphicon-minus");
+                $(this).find("span").addClass("glyphicon-plus");
+                return;
+            }     
+        });
+        
+        var plusMinus = ko.pureComputed(function(){
+            
+            
+        });
+        
         let selectName = function (element) {
             console.log(element);
             selectedName(element);
@@ -59,6 +147,15 @@ define(['knockout', 'postman', 'jquery'], function (ko, postman, $) { // needed 
         postman.subscribe("someEvent", function (data) {
             message(data.msg);
         });
+        
+        
+        
+
+        
+        $("button#postbtn").on("click", function(event){
+           
+        });
+        
 
         return {
             names,
@@ -68,7 +165,8 @@ define(['knockout', 'postman', 'jquery'], function (ko, postman, $) { // needed 
             isSelected,
             urls,
             nextPageNav,
-            prevPageNav
+            prevPageNav,
+            btnclick
         };
     };
 });

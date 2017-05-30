@@ -30,6 +30,13 @@ require(['knockout'], function (ko) {
         viewModel : {require: "app/components/tags"},
         template : {require: "text!app/components/tags.html"}
     });
+    
+    ko.components.register("marked-posts", {
+        viewModel : {require: "app/components/markedposts"},
+        template : {require: "text!app/components/markedposts.html"}
+    });
+    
+    
    
     ko.applyBindings({});
 });

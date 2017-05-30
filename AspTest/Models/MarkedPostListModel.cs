@@ -8,6 +8,7 @@ namespace WebService.Models
     public class MarkedPostListModel
     {
         public int Id { get; set; }
+        public string PostTitle { get; set; }
         public string Notes {get; set; }
 
         public string Url {get; set;}
