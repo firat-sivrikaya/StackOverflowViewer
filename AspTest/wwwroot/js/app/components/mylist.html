@@ -20,11 +20,13 @@
     <thead>
         <tr>
             <th>Post Name</th>
+            <th>Mark Post</th>
         </tr>
     </thead>
     <tbody data-bind="foreach: names">
         <tr>
             <td><a data-bind="attr: { href: $data.url }, text: $data.title"></a></td>
+            <td><button class="btn btn-default" id="postbtn" data-bind="click: $parent.btnclick">Mark</button></td>
         </tr>
     </tbody>
 </table>
