@@ -11,6 +11,47 @@ namespace StackOverflowDatabase
 {
         public class StackOverflowDataService : IPostDataService, IUserDataService, IMarkedPostDataService, ITagDataService, ICommentDataService
         {
+             public WordIdf GetIDFOfWord(string word)
+            {
+                using (var db = new StackOverflowContext())
+                {
+                return db.WordIdfs.Where(w => w.Word == word).First();
+                }
+            }
+
+            public List<WordTf> GetTFsOfWord(int wordId)
+            {
+                using (var db = new StackOverflowContext())
+                {
+                    return db.WordTfs.Where(w => w.WordId == wordId).ToList();
+                }
+            }
+             public void CreateHistory(History hist)
+            {
+                using (var context = new StackOverflowContext())
+                {
+                    context.History.Add(hist);
+                    context.SaveChanges();
+                    //var nextId = contex.Categories.Max(x => x.Id) + 1;
+                    //category.Id = nextId;
+                    // Instead of this change the database to use auto increment on
+                    // the categoryid in the category table.
+                    // Note: that you need to remove the foreign key in product first, 
+                    // then add the AI and finally reenter the FK on product.
+                    
+                    //contex.Categories.Add(category);
+                    //contex.SaveChanges();
+                }
+            }
+
+            public void DeleteHistory(History hist)
+            {
+                using (var contex = new StackOverflowContext())
+                {
+                    contex.History.Remove(hist);
+                    contex.SaveChanges();
+                }
+            }
             public void CreateMarkedPost(MarkedPost post)
             {
                 using (var contex = new StackOverflowContext())
@@ -61,7 +102,25 @@ namespace StackOverflowDatabase
                         .ToList();
                 }
             }
+            public IList<History> GetHisotry(int pageNumber, int pageSize)
+            {
+                using (var context = new StackOverflowContext())
+                {
+                    return context.History
+                        //.OrderBy(x => x.Name)
+                        .Skip((pageNumber - 1) * pageSize)  // 
+                        .Take(pageSize) // limit in db
+                        .ToList();
+                }
+            }  
 
+            public History GetHistory(int id)
+            {
+                using (var context = new StackOverflowContext())
+                {
+                    return context.History.Find(id);
+                }
+            }  
             public IList<MarkedPost> GetMarkedPosts(int pageNumber, int pageSize)
             {
                 using (var context = new StackOverflowContext())
@@ -71,6 +130,13 @@ namespace StackOverflowDatabase
                         .Skip((pageNumber - 1) * pageSize)  // 
                         .Take(pageSize) // limit in db
                         .ToList();
+                }
+            } 
+            public int GetNumberOfHisotry()
+            {
+                using (var context = new StackOverflowContext())
+                {
+                    return context.History.Count();
                 }
             }            
 

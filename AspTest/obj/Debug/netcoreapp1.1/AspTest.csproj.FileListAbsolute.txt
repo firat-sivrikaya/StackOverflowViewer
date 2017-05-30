@@ -30,3 +30,11 @@ C:\Users\arthur\Desktop\StackOverflowViewer\AspTest\obj\Debug\netcoreapp1.1\AspT
 C:\Users\arthur\Desktop\StackOverflowViewer\AspTest\obj\Debug\netcoreapp1.1\AspTest.pdb
 C:\Users\arthur\Desktop\StackOverflowViewer\AspTest\bin\Debug\netcoreapp1.1\AspTest.dll
 C:\Users\arthur\Desktop\StackOverflowViewer\AspTest\bin\Debug\netcoreapp1.1\AspTest.pdb
+C:\Users\dsalv\Documents\GitHub\StackOverflowViewer\AspTest\bin\Debug\netcoreapp1.1\AspTest.deps.json
+C:\Users\dsalv\Documents\GitHub\StackOverflowViewer\AspTest\bin\Debug\netcoreapp1.1\AspTest.runtimeconfig.json
+C:\Users\dsalv\Documents\GitHub\StackOverflowViewer\AspTest\bin\Debug\netcoreapp1.1\AspTest.runtimeconfig.dev.json
+C:\Users\dsalv\Documents\GitHub\StackOverflowViewer\AspTest\bin\Debug\netcoreapp1.1\AspTest.dll
+C:\Users\dsalv\Documents\GitHub\StackOverflowViewer\AspTest\bin\Debug\netcoreapp1.1\AspTest.pdb
+C:\Users\dsalv\Documents\GitHub\StackOverflowViewer\AspTest\obj\Debug\netcoreapp1.1\AspTest.AssemblyInfo.cs
+C:\Users\dsalv\Documents\GitHub\StackOverflowViewer\AspTest\obj\Debug\netcoreapp1.1\AspTest.dll
+C:\Users\dsalv\Documents\GitHub\StackOverflowViewer\AspTest\obj\Debug\netcoreapp1.1\AspTest.pdb

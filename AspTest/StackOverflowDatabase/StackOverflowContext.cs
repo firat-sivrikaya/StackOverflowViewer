@@ -14,7 +14,10 @@ namespace StackOverflowDatabase
         public DbSet<User> User { get; set; }
         public DbSet<Comment> Comment {get; set;}
         public DbSet<Tag> Tag { get; set; }
+        public DbSet<WordIdf> WordIdfs { get; set; }
+        public DbSet<WordTf> WordTfs { get; set; }
 
+        public DbSet<History> History{get;set;}
         //public DbSet<TagPost> TagPost {get; set;}
 
         public DbSet<MarkedPost> MarkedPost {get; set;}
@@ -55,6 +58,10 @@ namespace StackOverflowDatabase
             modelBuilder.Entity<Tag>().Property(x => x.Id).HasColumnName("id");
             modelBuilder.Entity<Tag>().Property(x => x.TagName).HasColumnName("tagname");
             modelBuilder.Entity<Tag>().Property(x => x.PostCount).HasColumnName("post_count");
+            //History
+            modelBuilder.Entity<History>().Property(x => x.UserId).HasColumnName("userid");
+            modelBuilder.Entity<History>().Property(x => x.Statement).HasColumnName("statement");
+            modelBuilder.Entity<History>().Property(x => x.Creation).HasColumnName("_timestamp");
             // Build models for comments
             modelBuilder.Entity<Comment>().ToTable("comments");
             modelBuilder.Entity<Comment>().Property(x => x.Id).HasColumnName("id");
@@ -63,6 +70,10 @@ namespace StackOverflowDatabase
             modelBuilder.Entity<Comment>().Property(x => x.Creation).HasColumnName("creation");
             modelBuilder.Entity<Comment>().Property(x => x.UserId).HasColumnName("userid");
             modelBuilder.Entity<Comment>().Property(x => x.PostId).HasColumnName("postid");
+            //Build dummy models for TFIDF
+            modelBuilder.Entity<WordIdf>().ToTable("wordidfs");
+
+            modelBuilder.Entity<WordTf>().ToTable("wordTfs").HasKey(pc => new { pc.Contentid, pc.Tf, pc.WordId });
             // Build models for tags posts
             //modelBuilder.Entity<TagPost>().ToTable("tags_post");
             //modelBuilder.Entity<TagPost>().Property(x => x.PostId).HasColumnName("postid");

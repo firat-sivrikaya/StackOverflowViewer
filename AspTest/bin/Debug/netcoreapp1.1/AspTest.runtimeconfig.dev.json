@@ -1,7 +1,7 @@
 {
   "runtimeOptions": {
     "additionalProbingPaths": [
-      "/Users/djcedrics/.nuget/packages"
+      "C:\\Users\\dsalv\\.nuget\\packages"
     ]
   }
 }

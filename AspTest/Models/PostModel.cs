@@ -17,5 +17,8 @@ namespace WebService.Models
         public string Body { get; set; }
         public TagModel Tag{ get; set; }
         public string TagUrl{ get; set; }
+
+        //variable for searching
+        public float rankPoint = 0;
     }
 }

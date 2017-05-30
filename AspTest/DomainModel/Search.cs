@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DomainModel
 {
-    public class Post
+    public class Search
     {
         public int Id { get; set; }
         public DateTime CreationDate { get; set; }
@@ -15,9 +15,6 @@ namespace DomainModel
         public int PostTypeId { get; set; }
         public Nullable<int> AcceptedAnswerId { get; set; }
         public int OwnerId { get; set; }
-
-        //variable for searching
-        public float rankPoint = 0;
 
     }
 }
