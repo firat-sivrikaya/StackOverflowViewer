@@ -7,7 +7,7 @@ define(['knockout', 'postman', 'jquery'], function (ko, postman, jquery) { // ne
         let selectedName = ko.observable();
         
         $.ajax({
-                url: 'http://localhost:5000/api/user',
+                url: 'http://localhost:5000/api/User',
                 type: "GET",
                 datatype: "json",
                 processData:false,
@@ -15,7 +15,12 @@ define(['knockout', 'postman', 'jquery'], function (ko, postman, jquery) { // ne
                 success: function (res){
                     for(var i = 0; i < 5; i++)
                     {
-                        users.push(res.result[i]);
+                        var user = {
+                            id: res.result[i].id,
+                            displayedName: res.result[i].displayedName,
+                            url: res.result[i].url
+                        }
+                        users.push(user);
                     }
                     //names(res.result[0].title);
                     console.log("Success!!");
@@ -31,7 +36,7 @@ define(['knockout', 'postman', 'jquery'], function (ko, postman, jquery) { // ne
 
         return {
             users,
-            message,
+            message
         };
     };
 });
