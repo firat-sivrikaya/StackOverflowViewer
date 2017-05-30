@@ -22,3 +22,11 @@
 /Users/djcedrics/cSharpProjects/StackOverflowViewer/AspTest/obj/Debug/netcoreapp1.1/AspTest.AssemblyInfo.cs
 /Users/djcedrics/cSharpProjects/StackOverflowViewer/AspTest/obj/Debug/netcoreapp1.1/AspTest.dll
 /Users/djcedrics/cSharpProjects/StackOverflowViewer/AspTest/obj/Debug/netcoreapp1.1/AspTest.pdb
+C:\Users\arthur\Desktop\StackOverflowViewer\AspTest\bin\Debug\netcoreapp1.1\AspTest.deps.json
+C:\Users\arthur\Desktop\StackOverflowViewer\AspTest\bin\Debug\netcoreapp1.1\AspTest.runtimeconfig.json
+C:\Users\arthur\Desktop\StackOverflowViewer\AspTest\bin\Debug\netcoreapp1.1\AspTest.runtimeconfig.dev.json
+C:\Users\arthur\Desktop\StackOverflowViewer\AspTest\obj\Debug\netcoreapp1.1\AspTest.AssemblyInfo.cs
+C:\Users\arthur\Desktop\StackOverflowViewer\AspTest\obj\Debug\netcoreapp1.1\AspTest.dll
+C:\Users\arthur\Desktop\StackOverflowViewer\AspTest\obj\Debug\netcoreapp1.1\AspTest.pdb
+C:\Users\arthur\Desktop\StackOverflowViewer\AspTest\bin\Debug\netcoreapp1.1\AspTest.dll
+C:\Users\arthur\Desktop\StackOverflowViewer\AspTest\bin\Debug\netcoreapp1.1\AspTest.pdb

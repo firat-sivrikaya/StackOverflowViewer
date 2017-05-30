@@ -12,13 +12,12 @@ namespace WebService.Controllers
     public class CommentController : Controller
     {
         private readonly ICommentDataService _dataService;
-        
-        public CommentController(ICommentDataService dataService)
+        private readonly IUserDataService _dataService2;
+        public CommentController(ICommentDataService dataService, IUserDataService dataservice2)
         {
-            Debug.WriteLine("1");
             _dataService = dataService;
+            _dataService2 = dataservice2;
             //Mapper.CreateMap<DomainModel.Post, Models.PostModel>();
-            Debug.WriteLine("ici");
             Mapper.Initialize( cfg => {
                 //cfg.CreateMap<Source, Dest>();
                 cfg.CreateMap<Comment, CommentListModel>();
@@ -40,6 +39,7 @@ namespace WebService.Controllers
             foreach ( CommentListModel p in result )
             {
                 p.Url = Url.Link(nameof(GetComment), new{ p.Id });
+                p.UserName = _dataService2.GetUser(p.UserId).DisplayedName;
             }
             
             var prevlink = pageNumber > 1

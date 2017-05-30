@@ -22,7 +22,7 @@ namespace StackOverflowDatabase
         {
             base.OnConfiguring(optionsBuilder);
             // Modify database info in order to run it in your own environment
-            optionsBuilder.UseMySql("server=localhost;database=testmigration;uid=root;pwd=pass");
+            optionsBuilder.UseMySql("server=localhost;database=testmigration;uid=root;pwd=swordfish");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
