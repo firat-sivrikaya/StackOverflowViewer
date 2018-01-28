@@ -4,7 +4,17 @@ Stack Overflow Viewer Application (SOVA) is a single-page application that allow
 
 ## Progress
 
-Database and business logic are nearly completed. Right now, we are working on the front-end.
+Completed.
+
+## Technologies that are used
+
+- MySQL
+- C#
+- ASP.Net
+- Entity Framework
+- LINQ
+- Bootstrap
+- Knockout.JS
 
 ## Notes for contributors
 
